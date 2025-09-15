@@ -1,0 +1,140 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rfp-scraper
+  labels:
+    app: rfp-scraper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rfp-scraper
+  template:
+    metadata:
+      labels:
+        app: rfp-scraper
+    spec:
+      containers:
+      - name: rfp-scraper
+        image: rfp-scraper:latest
+        ports:
+        - containerPort: 8000
+          name: metrics
+        env:
+        - name: ENVIRONMENT
+          value: "production"
+        - name: PYTHONPATH
+          value: "/app"
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config
+        - name: data-volume
+          mountPath: /app/data
+        - name: logs-volume
+          mountPath: /app/logs
+        livenessProbe:
+          httpGet:
+            path: /metrics
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /metrics
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+      volumes:
+      - name: config-volume
+        configMap:
+          name: rfp-scraper-config
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: rfp-scraper-data
+      - name: logs-volume
+        persistentVolumeClaim:
+          claimName: rfp-scraper-logs
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rfp-scraper-service
+spec:
+  selector:
+    app: rfp-scraper
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000
+    name: metrics
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rfp-scraper-config
+data:
+  config.yaml: |
+    email:
+      smtp_server: "smtp.gmail.com"
+      smtp_port: 587
+      sender_email: ""
+      sender_password: ""
+      recipient_email: ""
+      max_retries: 3
+      timeout: 30
+    scraping:
+      timeout: 30
+      retry_attempts: 3
+      delay_between_requests: 2
+      max_concurrent_requests: 5
+      user_agent: "RFP-Scraper/2.0"
+      rate_limit_per_minute: 60
+    database:
+      path: "data/rfp_database.sqlite"
+      backup_frequency_hours: 24
+      cleanup_days: 90
+    monitoring:
+      metrics_port: 8000
+      health_check_interval: 300
+      alert_thresholds:
+        error_rate: 0.1
+        response_time: 30.0
+    plugins:
+      enabled:
+        - "govtech_scraper"
+        - "federal_opportunities"
+      plugin_timeout: 60
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rfp-scraper-data
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rfp-scraper-logs
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi

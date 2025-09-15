@@ -1,0 +1,57 @@
+# RFP Scraper Enterprise Configuration
+# Comprehensive configuration for enterprise-grade deployment
+
+email:
+  smtp_server: "smtp.gmail.com"
+  smtp_port: 587
+  sender_email: ""
+  sender_password: ""  # Will be encrypted automatically
+  recipient_email: ""
+  max_retries: 3
+  timeout: 30
+
+scraping:
+  timeout: 30
+  retry_attempts: 3
+  delay_between_requests: 2
+  max_concurrent_requests: 5
+  user_agent: "RFP-Scraper/2.0"
+  rate_limit_per_minute: 60
+
+database:
+  path: "data/rfp_database.sqlite"
+  backup_frequency_hours: 24
+  cleanup_days: 90
+
+monitoring:
+  metrics_port: 8000
+  health_check_interval: 300
+  alert_thresholds:
+    error_rate: 0.1
+    response_time: 30.0
+
+plugins:
+  enabled:
+    - "govtech_scraper"
+    - "federal_opportunities"
+    - "state_contracts"
+  plugin_timeout: 60
+
+notifications:
+  slack_webhook: ""
+  webhook_timeout: 10
+  urgent_threshold_hours: 48
+
+# Scoring weights
+scoring:
+  urgency_weight: 3.0
+  value_weight: 2.0
+  keyword_weight: 1.5
+  deadline_weight: 2.0
+
+# AI/ML features
+ai_features:
+  enabled: false
+  model_path: "ml/models/rfp_classifier.pkl"
+  confidence_threshold: 0.8
+  retrain_threshold: 20  # Number of new opportunities before retraining
