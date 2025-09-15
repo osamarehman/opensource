@@ -347,10 +347,6 @@ python -m pytest --cov=src tests/
 4. Ensure all tests pass
 5. Submit a pull request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## 🆘 Support
 
 For support and questions:
