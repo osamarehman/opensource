@@ -1,0 +1,14 @@
+Scope,Description,Access_Level
+pub-marketplace-job-postings:read:all,Read marketplace job postings for public users,Public
+freelancer-profile-access:read,Access freelancer profile information,Restricted
+organization:read,Read organization/company data,Team Members
+organization:write,Write/modify organization data,Team Admins
+contract:read,Read contract information,Contract Participants
+contract:write,Write/create contract data,Contract Participants
+message:read,Read message threads and content,Authenticated Users
+message:write,Send messages and create threads,Authenticated Users
+financial:read,Access financial reports and earnings,Account Owners
+team:read,Read team information and structure,Team Members
+team:write,Manage team members and permissions,Team Admins
+activity:read,Read activity logs and tracking data,Account Owners
+snapshot:read,Access work diary snapshots,Contract Participants

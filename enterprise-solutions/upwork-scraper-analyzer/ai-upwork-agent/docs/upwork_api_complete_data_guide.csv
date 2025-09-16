@@ -1,0 +1,34 @@
+Category,Resource/Endpoint,Data_Available,Access_Level,Rate_Limits
+Jobs/Marketplace,marketplaceJobPostingsSearch,"Job ID, Title, Description, Skills, Budget, Client Info, Posted Date, Category, Experience Level",Public (with API key),10 requests/second per IP
+Jobs/Marketplace,marketplaceJobPostings (by ID),"Complete job details including requirements, budget ranges, client history",Public (with API key),10 requests/second per IP
+Jobs/Marketplace,Job Details,"Job description, requirements, duration, project type",Public (with API key),10 requests/second per IP
+Jobs/Marketplace,Job Skills/Requirements,"Required skills list, skill levels, preferred qualifications",Public (with API key),10 requests/second per IP
+Jobs/Marketplace,Job Budget/Pricing,"Hourly rates (min/max), fixed price amounts, budget type, payment terms",Restricted (some budget data),10 requests/second per IP
+Jobs/Marketplace,Job Category/Classification,"Job category, subcategory, industry classification",Public (with API key),10 requests/second per IP
+Jobs/Marketplace,Job Client Information,"Client name, location, hiring history, payment verification, ratings, total spent",Restricted (client privacy),10 requests/second per IP
+Jobs/Marketplace,Job Applications/Proposals Count,"Number of proposals, application cost (connects), proposal stats",Public (with API key),10 requests/second per IP
+User/Profile,User Profile,"Name, email, location, profile picture, verification status, member since",Public (basic info),10 requests/second per IP
+User/Profile,Freelancer Profile Records,"Freelancer skills, portfolio, ratings, job success score, hourly rate",Public (with API key),10 requests/second per IP
+User/Profile,Client Profile,"Client company info, industry, size, spending history, hire rate",Restricted (privacy settings),10 requests/second per IP
+User/Profile,User Authentication/Tokens,"Access tokens, refresh tokens, user permissions, account status",Authenticated user only,10 requests/second per IP
+Contracts/Offers,Contracts,"Contract ID, status, title, start/end dates, budget, milestones",Authenticated user only,10 requests/second per IP
+Contracts/Offers,Contract Details,"Contract terms, payment schedule, work description, deliverables",Contract participants only,10 requests/second per IP
+Contracts/Offers,Contract Feedback,"Client and freelancer feedback, ratings, comments, completion status",Contract participants only,10 requests/second per IP
+Contracts/Offers,Client Offers/Proposals,"Proposal text, bid amount, timeline, cover letter, portfolio items",Authenticated user only,10 requests/second per IP
+Contracts/Offers,Contract History,"All past contracts, earnings, completion rates, client relationships",Authenticated user only,10 requests/second per IP
+Messages/Communication,Message Threads,"Thread IDs, participants, message count, read status, timestamps",Authenticated user only,10 requests/second per IP
+Messages/Communication,Send Messages,"Message content, attachments, sender/receiver info, delivery status",Authenticated user only,10 requests/second per IP
+Messages/Communication,Message History,"Full message history, conversation threads, archived messages",Authenticated user only,10 requests/second per IP
+Financial/Reporting,Time Reports,"Hours logged, time tracking data, work periods, productivity metrics",Authenticated user only,10 requests/second per IP
+Financial/Reporting,Financial Reports,"Earnings by project, payment history, tax documents, invoices",Authenticated user only,10 requests/second per IP
+Financial/Reporting,Earnings/Payments,"Total earnings, payment methods, withdrawals, fee breakdowns",Authenticated user only,10 requests/second per IP
+Team/Organization,Organizations/Companies,"Company/organization details, team structure, admin permissions",Team members only,10 requests/second per IP
+Team/Organization,Teams,"Team member roles, permissions, project assignments",Team admins only,10 requests/second per IP
+Team/Organization,Team Members,"Individual team member profiles, access levels, activity status",Team members only,10 requests/second per IP
+Analytics/Metadata,Categories/Skills Metadata,"Complete skills taxonomy, job categories, skill popularity",Public (with API key),10 requests/second per IP
+Analytics/Metadata,Tests Metadata,"Available tests, test scores, certification data, skill assessments",Public (with API key),10 requests/second per IP
+Analytics/Metadata,Regions/Location Data,"Country/region data, timezone info, location preferences",Public (with API key),10 requests/second per IP
+Snapshots/Work,Work Diary Snapshots,"Screenshot thumbnails, activity levels, work diary entries",Contract participants only,10 requests/second per IP
+Snapshots/Work,Snapshot Details,"Full-size screenshots, activity details, time stamps, app usage",Contract participants only,10 requests/second per IP
+Activities/Tracking,Activities,"Login/logout times, project activities, time tracking events",Authenticated user only,10 requests/second per IP
+Activities/Tracking,Activity Reports,"Detailed activity logs, productivity reports, work patterns",Authenticated user only,10 requests/second per IP
