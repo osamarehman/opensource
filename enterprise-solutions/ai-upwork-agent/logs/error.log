@@ -1,0 +1,257 @@
+$ npx tsc --noEmit --pretty --removeComments
+src/app/api/automation/analyze/route.ts:41:30 - error TS18046: 'body' is of type 'unknown'.
+
+41             eq(savedJobs.id, body.jobId),
+                                ~~~~
+
+src/app/api/automation/analyze/route.ts:55:56 - error TS18046: 'body' is of type 'unknown'.
+
+55       const decision = await decisionEngine.analyzeJob(body.jobId, body.settings);
+                                                          ~~~~
+
+src/app/api/automation/analyze/route.ts:55:68 - error TS18046: 'body' is of type 'unknown'.
+
+55       const decision = await decisionEngine.analyzeJob(body.jobId, body.settings);
+                                                                      ~~~~
+
+src/app/api/automation/analyze/route.ts:60:11 - error TS18046: 'body' is of type 'unknown'.
+
+60       if (body.executeAction) {
+             ~~~~
+
+src/app/api/automation/analyze/route.ts:63:11 - error TS18046: 'body' is of type 'unknown'.
+
+63           body.jobId,
+             ~~~~
+
+src/app/api/automation/analyze/route.ts:71:16 - error TS18046: 'body' is of type 'unknown'.
+
+71         jobId: body.jobId,
+                  ~~~~
+
+src/app/api/automation/analyze/route.ts:74:19 - error TS18046: 'body' is of type 'unknown'.
+
+74         executed: body.executeAction,
+                     ~~~~
+
+src/app/api/automation/cron/route.ts:85:24 - error TS18046: 'body' is of type 'unknown'.
+
+85         maxJobsPerRun: body.maxJobs || userSettings?.cronJobs?.maxJobsPerRun || 20,
+                          ~~~~
+
+src/app/api/automation/cron/route.ts:86:35 - error TS18046: 'body' is of type 'unknown'.
+
+86         autoProcessHighScoreJobs: body.autoProcess,
+                                     ~~~~
+
+src/app/api/automation/cron/route.ts:87:32 - error TS18046: 'body' is of type 'unknown'.
+
+87         notifyOnHighValueJobs: body.notify,
+                                  ~~~~
+
+src/app/api/automation/cron/route.ts:149:9 - error TS2698: Spread types may only be created from object types.
+
+149         ...body,
+            ~~~~~~~
+
+src/app/api/jobs/route.ts:99:18 - error TS18046: 'body' is of type 'unknown'.
+
+99           title: body.title,
+                    ~~~~
+
+src/app/api/jobs/route.ts:100:24 - error TS18046: 'body' is of type 'unknown'.
+
+100           description: body.description,
+                           ~~~~
+
+src/app/api/jobs/route.ts:101:24 - error TS18046: 'body' is of type 'unknown'.
+
+101           upworkJobId: body.upworkJobId,
+                           ~~~~
+
+src/app/api/jobs/route.ts:102:19 - error TS18046: 'body' is of type 'unknown'.
+
+102           budget: body.budget || null,
+                      ~~~~
+
+src/app/api/jobs/route.ts:103:19 - error TS18046: 'body' is of type 'unknown'.
+
+103           skills: body.skills,
+                      ~~~~
+
+src/app/api/jobs/route.ts:104:23 - error TS18046: 'body' is of type 'unknown'.
+
+104           clientInfo: body.clientInfo,
+                          ~~~~
+
+src/app/api/jobs/route.ts:105:16 - error TS18046: 'body' is of type 'unknown'.
+
+105           url: body.url,
+                   ~~~~
+
+src/app/api/jobs/route.ts:106:20 - error TS18046: 'body' is of type 'unknown'.
+
+106           aiScore: body.aiScore?.toString() || null,
+                       ~~~~
+
+src/app/api/jobs/route.ts:108:20 - error TS18046: 'body' is of type 'unknown'.
+
+108             title: body.title,
+                       ~~~~
+
+src/app/api/jobs/route.ts:109:26 - error TS18046: 'body' is of type 'unknown'.
+
+109             description: body.description,
+                             ~~~~
+
+src/app/api/jobs/route.ts:110:21 - error TS18046: 'body' is of type 'unknown'.
+
+110             budget: body.budget,
+                        ~~~~
+
+src/app/api/jobs/route.ts:111:21 - error TS18046: 'body' is of type 'unknown'.
+
+111             skills: body.skills,
+                        ~~~~
+
+src/app/api/jobs/route.ts:112:25 - error TS18046: 'body' is of type 'unknown'.
+
+112             clientInfo: body.clientInfo,
+                            ~~~~
+
+src/app/api/jobs/route.ts:113:18 - error TS18046: 'body' is of type 'unknown'.
+
+113             url: body.url,
+                     ~~~~
+
+src/app/api/jobs/route.ts:137:15 - error TS2339: Property 'id' does not exist on type 'unknown'.
+
+137       const { id, ...updateData } = body;
+                  ~~
+
+src/app/api/jobs/route.ts:137:22 - error TS2700: Rest types may only be created from object types.
+
+137       const { id, ...updateData } = body;
+                         ~~~~~~~~~~
+
+src/app/api/proposals/generate/route.ts:28:30 - error TS18046: 'body' is of type 'unknown'.
+
+28             eq(savedJobs.id, body.jobId),
+                                ~~~~
+
+src/app/api/proposals/generate/route.ts:69:9 - error TS18046: 'body' is of type 'unknown'.
+
+69         body.customInstructions
+           ~~~~
+
+src/app/api/proposals/generate/route.ts:74:11 - error TS18046: 'body' is of type 'unknown'.
+
+74       if (body.autoSave) {
+             ~~~~
+
+src/app/api/proposals/route.ts:91:24 - error TS18046: 'body' is of type 'unknown'.
+
+91           upworkJobId: body.jobId, // Assuming jobId maps to upworkJobId
+                          ~~~~
+
+src/app/api/proposals/route.ts:92:20 - error TS18046: 'body' is of type 'unknown'.
+
+92           content: body.proposalData.coverLetter || '',
+                      ~~~~
+
+src/app/api/proposals/route.ts:93:25 - error TS18046: 'body' is of type 'unknown'.
+
+93           proposalData: body.proposalData,
+                           ~~~~
+
+src/app/api/proposals/route.ts:97:19 - error TS18046: 'body' is of type 'unknown'.
+
+97           sentAt: body.sentAt ? new Date(body.sentAt) : null,
+                     ~~~~
+
+src/app/api/proposals/route.ts:97:42 - error TS18046: 'body' is of type 'unknown'.
+
+97           sentAt: body.sentAt ? new Date(body.sentAt) : null,
+                                            ~~~~
+
+src/app/api/proposals/route.ts:98:24 - error TS18046: 'body' is of type 'unknown'.
+
+98           aiGenerated: body.aiGenerated,
+                          ~~~~
+
+src/app/api/proposals/route.ts:119:15 - error TS2339: Property 'id' does not exist on type 'unknown'.
+
+119       const { id, ...updateData } = body;
+                  ~~
+
+src/app/api/proposals/route.ts:119:22 - error TS2700: Rest types may only be created from object types.
+
+119       const { id, ...updateData } = body;
+                         ~~~~~~~~~~
+
+src/app/api/webhooks/jobs/route.ts:6:10 - error TS2305: Module '"@/lib/validations"' has no exported member 'jobWebhookSchema'.
+
+6 import { jobWebhookSchema } from '@/lib/validations';
+           ~~~~~~~~~~~~~~~~
+
+src/app/api/webhooks/jobs/route.ts:133:46 - error TS7006: Parameter 'skill' implicitly has an 'any' type.
+
+133   const skillMatches = jobData.skills.filter(skill =>
+                                                 ~~~~~
+
+src/types/index.ts:31:13 - error TS2304: Cannot find name 'UserSettings'.
+
+31   settings: UserSettings;
+               ~~~~~~~~~~~~
+
+src/types/index.ts:41:12 - error TS2304: Cannot find name 'JobFilter'.
+
+41   filters: JobFilter;
+              ~~~~~~~~~
+
+src/types/index.ts:52:12 - error TS2304: Cannot find name 'Job'.
+
+52   jobData: Job;
+              ~~~
+
+src/types/index.ts:64:13 - error TS2304: Cannot find name 'Proposal'.
+
+64   proposal: Proposal;
+               ~~~~~~~~
+
+src/types/index.ts:208:9 - error TS2304: Cannot find name 'Job'.
+
+208   jobs: Job[];
+            ~~~
+
+src/types/index.ts:209:12 - error TS2304: Cannot find name 'JobFilter'.
+
+209   filters: JobFilter;
+               ~~~~~~~~~
+
+src/types/index.ts:211:16 - error TS2304: Cannot find name 'Job'.
+
+211   selectedJob: Job | null;
+                   ~~~
+
+src/types/index.ts:217:14 - error TS2304: Cannot find name 'ProposalTemplate'.
+
+217   templates: ProposalTemplate[];
+                 ~~~~~~~~~~~~~~~~
+
+src/types/index.ts:218:20 - error TS2304: Cannot find name 'Proposal'.
+
+218   currentProposal: Proposal | null;
+                       ~~~~~~~~
+
+
+Found 49 errors in 7 files.
+
+Errors  Files
+     7  src/app/api/automation/analyze/route.ts:41
+     4  src/app/api/automation/cron/route.ts:85
+    16  src/app/api/jobs/route.ts:99
+     3  src/app/api/proposals/generate/route.ts:28
+     8  src/app/api/proposals/route.ts:91
+     2  src/app/api/webhooks/jobs/route.ts:6
+     9  src/types/index.ts:31

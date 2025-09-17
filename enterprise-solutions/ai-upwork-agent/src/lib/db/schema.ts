@@ -94,10 +94,16 @@ export const savedJobs = pgTable(
       .references(() => users.id)
       .notNull(),
     upworkJobId: text("upwork_job_id").notNull(),
+    title: text("title").notNull(),
+    description: text("description").notNull(),
+    budget: text("budget"),
+    skills: jsonb("skills").default([]),
+    clientInfo: jsonb("client_info").default({}),
+    url: text("url").notNull(),
     jobData: jsonb("job_data").notNull(),
     tags: jsonb("tags").default([]),
     notes: text("notes"),
-    aiScore: decimal("ai_score", { precision: 3, scale: 2 }),
+    aiScore: text("ai_score"), // Changed to text to match usage
     createdAt: timestamp("created_at").defaultNow(),
     updatedAt: timestamp("updated_at").defaultNow(),
   },
@@ -156,9 +162,11 @@ export const proposalHistory = pgTable(
       .references(() => users.id)
       .notNull(),
     upworkJobId: text("upwork_job_id").notNull(),
+    jobId: uuid("job_id").references(() => savedJobs.id), // Add jobId reference
+    content: text("content"), // Add content field
     proposalData: jsonb("proposal_data").notNull(),
     status: text("status", {
-      enum: ["draft", "sent", "viewed", "interview", "hired", "declined"],
+      enum: ["draft", "sent", "viewed", "interview", "hired", "declined", "accepted"],
     }).default("draft"),
     aiGenerated: boolean("ai_generated").default(false),
     templateId: uuid("template_id").references(() => proposalTemplates.id),

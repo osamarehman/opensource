@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import { tenants, users } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 import { TenantError } from "@/types";
 
 export interface TenantContext {
@@ -41,8 +41,10 @@ export async function getTenantContext(): Promise<TenantContext> {
   const user = await db
     .select()
     .from(users)
-    .where(eq(users.clerkUserId, userId))
-    .where(eq(users.tenantId, tenant[0].id))
+    .where(and(
+      eq(users.clerkUserId, userId),
+      eq(users.tenantId, tenant[0].id)
+    ))
     .limit(1);
 
   if (user.length === 0) {
@@ -178,8 +180,10 @@ export async function removeUserFromTenant(
 ) {
   await db
     .delete(users)
-    .where(eq(users.clerkUserId, clerkUserId))
-    .where(eq(users.tenantId, tenantId));
+    .where(and(
+      eq(users.clerkUserId, clerkUserId),
+      eq(users.tenantId, tenantId)
+    ));
 }
 
 /**
@@ -193,8 +197,10 @@ export async function updateUserRole(
   const updatedUser = await db
     .update(users)
     .set({ role: newRole, updatedAt: new Date() })
-    .where(eq(users.clerkUserId, clerkUserId))
-    .where(eq(users.tenantId, tenantId))
+    .where(and(
+      eq(users.clerkUserId, clerkUserId),
+      eq(users.tenantId, tenantId)
+    ))
     .returning();
 
   return updatedUser[0];
